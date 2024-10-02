@@ -1,16 +1,12 @@
+import React, { useState } from "react"; // Import useState
 import { Button, Container, Typography, Box } from "@mui/material";
 import bg1 from "./assets/bg1.png";
-import { useEffect } from "react";
+import Space from "./components/env/Space";
+
 
 const App = () => {
-  useEffect(() => {
-    // Disable scrolling
-    document.body.style.overflow = "hidden";
-    // Clean up by resetting the style on component unmount
-    return () => {
-      document.body.style.overflow = "unset";
-    };
-  }, []);
+  // State to manage which component to show
+  const [show3D, setShow3D] = useState(false);
 
   const handleVideoClick = () => {
     // Navigate to video page
@@ -18,9 +14,18 @@ const App = () => {
   };
 
   const handle3DEnvClick = () => {
-    // Navigate to 3D environment page
-    console.log("3D Environment button clicked");
+    // Show 3D Environment
+    setShow3D(true);
   };
+
+  const handleBackClick = () => {
+    // Back to landing page
+    setShow3D(false);
+  };
+
+  if (show3D) {
+    return <Space />; // Show the 3D space
+  } 
 
   return (
     <Container
@@ -100,28 +105,3 @@ const App = () => {
 };
 
 export default App;
-
-// import 'aframe';  // Import A-Frame
-// import VideoScene from './components/VideoScene';
-
-// function App() {
-//   return (
-//     // <div className="App">
-//     //   <a-scene>
-//     //     <a-box position="0 1.5 -5" rotation="0 45 0" color="blue"></a-box>
-//     //     <a-sphere position="2 1.5 -5" radius="1" color="red"></a-sphere>
-//     //     <a-plane position="0 0 -5" rotation="-90 0 0" width="10" height="10" color="#7BC8A4"></a-plane>
-//     //     <a-sky color="#ECECEC"></a-sky>
-//     //     <a-camera>
-//     //       <a-cursor></a-cursor>
-//     //     </a-camera>
-//     //   </a-scene>
-//     // </div>
-//     <div>
-//       <h1>360 Video Experience</h1>
-//       <VideoScene />
-//     </div>
-//   );
-// }
-
-// export default App;
