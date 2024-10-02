@@ -1,7 +1,7 @@
 import "aframe";
 import videoSrc from "../../assets/test360.mp4";
 
-export default function VideoScene({ onBackClick }) {
+export default function VideoScene({ onBackClick }) { //eslint-disable-line
   return (
     <div className="App">
       <a-scene>

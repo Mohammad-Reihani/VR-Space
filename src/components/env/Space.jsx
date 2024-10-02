@@ -1,6 +1,6 @@
 import "aframe";
 
-export default function Space({ onBackClick }) {
+export default function Space({ onBackClick }) { //eslint-disable-line
   return (
     <div className="App">
       <a-scene>
