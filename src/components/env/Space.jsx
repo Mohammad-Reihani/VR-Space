@@ -1,6 +1,6 @@
 import "aframe";
 
-export default function Space() {
+export default function Space({ onBackClick }) {
   return (
     <div className="App">
       <a-scene>
@@ -18,6 +18,24 @@ export default function Space() {
           <a-cursor></a-cursor>
         </a-camera>
       </a-scene>
+      {/* Back Button */}
+      <button
+        onClick={onBackClick} // Call the passed back function
+        style={{
+          position: "absolute",
+          top: "20px",
+          left: "20px",
+          padding: "10px 20px",
+          backgroundColor: "rgba(0, 0, 0, 0.5)",
+          color: "white",
+          border: "none",
+          borderRadius: "5px",
+          cursor: "pointer",
+          zIndex: 1, // Ensure it's above the 3D scene
+        }}
+      >
+        Back
+      </button>
     </div>
   );
 }

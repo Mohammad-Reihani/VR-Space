@@ -1,31 +1,36 @@
-import React, { useState } from "react"; // Import useState
+import { useState } from "react"; // Import useState
 import { Button, Container, Typography, Box } from "@mui/material";
 import bg1 from "./assets/bg1.png";
 import Space from "./components/env/Space";
-
+import VideoScene from "./components/video/VideoScene";
 
 const App = () => {
   // State to manage which component to show
-  const [show3D, setShow3D] = useState(false);
+  const [view, setView] = useState("landing"); // Default view is landing
 
   const handleVideoClick = () => {
-    // Navigate to video page
-    console.log("Video button clicked");
+    // Show video component
+    setView("video");
   };
 
   const handle3DEnvClick = () => {
     // Show 3D Environment
-    setShow3D(true);
+    setView("3D");
   };
 
   const handleBackClick = () => {
     // Back to landing page
-    setShow3D(false);
+    setView("landing");
   };
 
-  if (show3D) {
-    return <Space />; // Show the 3D space
-  } 
+  // Conditional rendering based on the current view
+  if (view === "3D") {
+    return <Space onBackClick={handleBackClick} />; // Pass the back handler
+  }
+
+  if (view === "video") {
+    return <VideoScene onBackClick={handleBackClick} />; // Pass the back handler
+  }
 
   return (
     <Container
