@@ -1,6 +1,6 @@
 import "aframe";
 // import videoSrc_01 from "../../assets/test360_01.mp4";
-import videoSrc_02 from "../../assets/test360_02.mp4";
+import videoSrc_02 from "../../assets/test360_01.mp4";
 
 export default function VideoScene({ onBackClick }) { //eslint-disable-line
   return (
