@@ -1,11 +1,13 @@
 import "aframe";
-import videoSrc from "../../assets/test360.mp4";
+// import videoSrc_01 from "../../assets/test360_01.mp4";
+import videoSrc_02 from "../../assets/test360_02.mp4";
 
 export default function VideoScene({ onBackClick }) { //eslint-disable-line
   return (
     <div className="App">
       <a-scene>
-        <a-videosphere src={`url(${videoSrc})`} />
+        {/* <a-videosphere src={`url(${videoSrc_01})`} /> */}
+        <a-videosphere src={`url(${videoSrc_02})`} />
         <a-entity camera look-controls position="0 1.6 0" />
       </a-scene>
       {/* Back Button */}

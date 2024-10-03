@@ -37,7 +37,7 @@ const App = () => {
     default:
       return (
         <div>
-          <h1>What da fucking hell are you doing here! get out!</h1>
+          <h1>What da hucking hell are you doing here! get out!</h1>
         </div>
       );
   }

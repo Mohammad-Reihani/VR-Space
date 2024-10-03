@@ -1,11 +1,12 @@
 import "aframe";
 
-export default function Space({ onBackClick }) { //eslint-disable-line
+export default function Space({ onBackClick }) {
+  //eslint-disable-line
   return (
     <div className="App">
       <a-scene>
         <a-box position="0 1.5 -5" rotation="0 45 0" color="blue"></a-box>
-        <a-sphere position="2 1.5 -5" radius="1" color="red"></a-sphere>
+        <a-sphere position="3 1.5 -5" radius="1" color="red"></a-sphere>
         <a-plane
           position="0 0 -5"
           rotation="-90 0 0"
@@ -18,6 +19,7 @@ export default function Space({ onBackClick }) { //eslint-disable-line
           <a-cursor></a-cursor>
         </a-camera>
       </a-scene>
+
       {/* Back Button */}
       <button
         onClick={onBackClick} // Call the passed back function
