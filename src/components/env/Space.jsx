@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import "aframe";
 import "aframe-environment-component"; // Import environment component
 import MenuInSpace from "./MenuInSpace";
@@ -9,28 +9,27 @@ export default function Space({ onBackClick }) {
   const handleOptionClick = (option) => {
     setOptionSelected(option);
     console.log(`Option ${option} selected`);
-    // Handle option logic here, e.g., showing different 3D objects
   };
 
   return (
     <div className="App" style={{ height: "100vh" }}>
       <a-scene>
-        {/* 3D Environment */}
-        <a-entity environment="preset: forest;  skyColor: #88ccee;"></a-entity>
+        {/* Environment */}
+        <a-entity environment="preset: forest; dressingAmount: 10; skyColor: #88ccee;"></a-entity>
 
-        {/* Insert the menu into the environment */}
-        <MenuInSpace
-          onBackClick={onBackClick}
-          onOptionClick={handleOptionClick}
-        />
+        {/* Raycaster for detecting clicks */}
+        <a-entity
+          // camera
+          look-controls
+          raycaster="objects: .clickable"
+          cursor="fuse: false; rayOrigin: mouse"
+        ></a-entity>
 
-        {/* Camera and cursor */}
-        <a-camera>
-          <a-cursor></a-cursor>
-        </a-camera>
+        {/* Menu */}
+        <MenuInSpace onBackClick={onBackClick} onOptionClick={handleOptionClick} />
       </a-scene>
 
-      {/* Back Button (UI outside the scene, for navigation if needed) */}
+      {/* Back Button outside the 3D space */}
       <button
         onClick={onBackClick}
         style={{
