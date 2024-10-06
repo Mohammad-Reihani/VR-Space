@@ -18,16 +18,22 @@ export default function Space({ onBackClick }) {
       <a-scene>
         <ModelViewer
           modelSrc={carModel}
-          position="0 0 -5"
-          scale="30 30 30"
+          position="0 0 -3"
+          scale="40 40 40"
           rotation="0 45 0"
         />
         <a-entity environment="preset: forest; dressingAmount: 10; skyColor: #88ccee;"></a-entity>
 
-        <a-entity
+        {/* <a-entity
           camera
           look-controls
           position="0 2 0"
+          cursor="fuse: false; rayOrigin: mouse"
+        ></a-entity> */}
+        <a-entity
+          // camera
+          look-controls
+          raycaster="objects: .clickable"
           cursor="fuse: false; rayOrigin: mouse"
         ></a-entity>
 
