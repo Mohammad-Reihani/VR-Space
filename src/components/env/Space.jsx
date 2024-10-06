@@ -1,48 +1,85 @@
+/* eslint-disable */
 import React, { useState } from "react";
 import "aframe";
 import "aframe-environment-component";
 import MenuInSpace from "./MenuInSpace";
-import carModel from "../../assets/test3d.glb";
 import ModelViewer from "./ModelViewer";
+import carModel from "../../assets/test3d.glb"; // Your car model
+import movieSrc from "../../assets/test360_01.mp4"; // Video source
 
 export default function Space({ onBackClick }) {
-  const [optionSelected, setOptionSelected] = useState(null);
+  const [videoStarted, setVideoStarted] = useState(false);
 
-  const handleOptionClick = (option) => {
-    setOptionSelected(option);
-    console.log(`Option ${option} selected`);
+  const handlePlayVideo = () => {
+    const video = document.querySelector("#movie");
+    video.play();
+    setVideoStarted(true);
   };
 
   return (
     <div className="App" style={{ height: "100vh" }}>
       <a-scene>
+        {/* Cinema Environment */}
+        <a-entity environment="preset: forest; dressingAmount: 10; skyColor: #88ccee;"></a-entity>
+        
+        {/* Movie Screen */}
+        <a-assets>
+          <video id="movie" src={movieSrc} crossOrigin="anonymous" playsInline="true" />
+        </a-assets>
+
+        <a-video
+          src="#movie"
+          position="0 2 -8"
+          width="6"
+          height="4"
+          autoplay={videoStarted} // Only autoplay after user interaction
+        ></a-video>
+
+        {/* Button to Start Video */}
+        {!videoStarted && (
+          <button
+            onClick={handlePlayVideo}
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              padding: "10px 20px",
+              backgroundColor: "rgba(0, 0, 0, 0.7)",
+              color: "white",
+              border: "none",
+              borderRadius: "5px",
+              cursor: "pointer",
+              zIndex: 1000,
+            }}
+          >
+            Play Movie
+          </button>
+        )}
+
+        {/* 3D Model (Car or replace with cinema elements) */}
         <ModelViewer
           modelSrc={carModel}
           position="0 0 -3"
           scale="40 40 40"
           rotation="0 45 0"
         />
-        <a-entity environment="preset: forest; dressingAmount: 10; skyColor: #88ccee;"></a-entity>
 
-        {/* <a-entity
-          camera
-          look-controls
-          position="0 2 0"
-          cursor="fuse: false; rayOrigin: mouse"
-        ></a-entity> */}
+        {/* Camera and Cursor Controls */}
         <a-entity
-          // camera
           look-controls
           raycaster="objects: .clickable"
           cursor="fuse: false; rayOrigin: mouse"
         ></a-entity>
 
+        {/* Menu Component in Space */}
         <MenuInSpace
           onBackClick={onBackClick}
-          onOptionClick={handleOptionClick}
+          onOptionClick={(option) => console.log(`Option ${option} selected`)}
         />
       </a-scene>
 
+      {/* Back Button */}
       <button
         onClick={onBackClick}
         style={{
