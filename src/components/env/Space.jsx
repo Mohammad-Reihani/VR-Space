@@ -23,6 +23,19 @@ export default function Space({ onBackClick }) {
     setVideoStarted(true);
   };
 
+  const handleFullscreen = () => {
+    const element = document.documentElement;
+    if (element.requestFullscreen) {
+      element.requestFullscreen();
+    } else if (element.mozRequestFullScreen) {
+      element.mozRequestFullScreen();
+    } else if (element.webkitRequestFullscreen) {
+      element.webkitRequestFullscreen();
+    } else if (element.msRequestFullscreen) {
+      element.msRequestFullscreen();
+    }
+  };
+
   return (
     <div className="App" style={{ height: "100vh" }}>
       <a-scene>
@@ -62,8 +75,7 @@ export default function Space({ onBackClick }) {
           look-controls
           raycaster="objects: .clickable"
           cursor="fuse: false; rayOrigin: mouse"
-        ></a-entity>
-
+        />
 
         {/* Movie Screen */}
         <a-assets>
@@ -128,6 +140,25 @@ export default function Space({ onBackClick }) {
         }}
       >
         Back
+      </button>
+
+      {/* Fullscreen Button */}
+      <button
+        onClick={handleFullscreen}
+        style={{
+          position: "absolute",
+          top: "20px",
+          right: "20px",
+          padding: "10px 20px",
+          backgroundColor: "rgba(0, 0, 0, 0.5)",
+          color: "white",
+          border: "none",
+          borderRadius: "5px",
+          cursor: "pointer",
+          zIndex: 1000,
+        }}
+      >
+        Fullscreen
       </button>
     </div>
   );
