@@ -5,10 +5,16 @@ import "aframe-environment-component";
 import MenuInSpace from "./MenuInSpace";
 import ModelViewer from "./ModelViewer";
 import GltfModelViewer from "./GltfModelViewer";
+import ObjModelViewer from "./ModelViewers/ObjModelViewer";
 import movieSrc from "../../assets/test360_01.mp4"; // Video source
+
+//* Model imports
 import carModel from "../../assets/test3d.glb"; // Your car model
 import cinemaModel from "../../assets/models/low_poly_cinema.glb";
+import testModel from "../../assets/models/underground_parking_lot.glb";
 // import cinemaModel2 from "../../assets/models/low_poly_cinema/scene.gltf";
+import cinemaObj from "../../assets/models/cinema_obj/Low Poly - Cinema.obj";
+import cinemaMtl from "../../assets/models/cinema_obj/Low Poly - Cinema.mtl";
 
 export default function Space({ onBackClick }) {
   const [videoStarted, setVideoStarted] = useState(false);
@@ -66,18 +72,25 @@ export default function Space({ onBackClick }) {
         )}
 
         {/* 3D Model (Car or replace with cinema elements) */}
-        <ModelViewer
+        {/* <ModelViewer
           modelSrc={cinemaModel}
           position="0 0 -3"
           scale="1 1 1"
           rotation="0 45 0"
-        />
-        {/* <GltfModelViewer
-          modelSrc={cinemaModel2}
-          position="0 1.5 -5"
+        /> */}
+        {/* <ModelViewer
+          modelSrc={testModel}
+          position="0 0.2 -3"
+          scale="1 1 1"
+          rotation="0  0"
+        /> */}
+        <ObjModelViewer
+          objSrc={cinemaObj}
+          mtlSrc={cinemaMtl}
+          position="0 0 -5"
           scale="1 1 1"
           rotation="0 45 0"
-        /> */}
+        />
 
         {/* Camera and Cursor Controls */}
         <a-entity

@@ -19,5 +19,13 @@ export default defineConfig({
       cert: fs.readFileSync(path.resolve(__dirname, "cert.pem")),
     },
   },
-  assetsInclude: ["**/*.glb"],
+  assetsInclude: [
+    "**/*.obj",
+    "**/*.mtl",
+    "**/*.png",
+    "**/*.jpg",
+    "**/*.jpeg",
+    "**/*.glb",
+    "**/*.gltf",
+  ],
 });
