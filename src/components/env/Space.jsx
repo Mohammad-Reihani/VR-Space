@@ -43,33 +43,11 @@ export default function Space({ onBackClick }) {
 
         <a-video
           src="#movie"
-          position="0 2 -8"
+          position="0 3.35 -12.9"
           width="6"
           height="4"
           autoplay={videoStarted} // Only autoplay after user interaction
         ></a-video>
-
-        {/* Button to Start Video */}
-        {!videoStarted && (
-          <button
-            onClick={handlePlayVideo}
-            style={{
-              position: "absolute",
-              top: "50%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
-              padding: "10px 20px",
-              backgroundColor: "rgba(0, 0, 0, 0.7)",
-              color: "white",
-              border: "none",
-              borderRadius: "5px",
-              cursor: "pointer",
-              zIndex: 1000,
-            }}
-          >
-            Play Movie
-          </button>
-        )}
 
         {/* 3D Model (Car or replace with cinema elements) */}
         {/* <ModelViewer
@@ -77,8 +55,8 @@ export default function Space({ onBackClick }) {
           position="0 0 -3"
           scale="1 1 1"
           rotation="0 45 0"
-        /> */}
-        {/* <ModelViewer
+        />
+        <ModelViewer
           modelSrc={testModel}
           position="0 0.2 -3"
           scale="1 1 1"
@@ -89,22 +67,53 @@ export default function Space({ onBackClick }) {
           mtlSrc={cinemaMtl}
           position="0 0 -5"
           scale="1 1 1"
-          rotation="0 45 0"
+          rotation="0 0 0"
         />
 
         {/* Camera and Cursor Controls */}
-        <a-entity
+        {/* <a-entity
           look-controls
           raycaster="objects: .clickable"
           cursor="fuse: false; rayOrigin: mouse"
-        ></a-entity>
+        ></a-entity> */}
+        {/* <a-entity> */}
+          <a-entity
+            position="0 2.5 -3"
+            camera
+            look-controls
+            raycaster="objects: .clickable"
+            cursor="fuse: false; rayOrigin: mouse"
+          ></a-entity>
+        {/* </a-entity> */}
 
         {/* Menu Component in Space */}
-        <MenuInSpace
+        {/* <MenuInSpace
           onBackClick={onBackClick}
           onOptionClick={(option) => console.log(`Option ${option} selected`)}
-        />
+        /> */}
       </a-scene>
+
+      {/* Button to Start Video */}
+      {!videoStarted && (
+        <button
+          onClick={handlePlayVideo}
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            padding: "10px 20px",
+            backgroundColor: "rgba(0, 0, 0, 0.7)",
+            color: "white",
+            border: "none",
+            borderRadius: "5px",
+            cursor: "pointer",
+            zIndex: 1000,
+          }}
+        >
+          Play Movie
+        </button>
+      )}
 
       {/* Back Button */}
       <button
