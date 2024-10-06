@@ -4,8 +4,11 @@ import "aframe";
 import "aframe-environment-component";
 import MenuInSpace from "./MenuInSpace";
 import ModelViewer from "./ModelViewer";
-import carModel from "../../assets/test3d.glb"; // Your car model
+import GltfModelViewer from "./GltfModelViewer";
 import movieSrc from "../../assets/test360_01.mp4"; // Video source
+import carModel from "../../assets/test3d.glb"; // Your car model
+import cinemaModel from "../../assets/models/low_poly_cinema.glb";
+// import cinemaModel2 from "../../assets/models/low_poly_cinema/scene.gltf";
 
 export default function Space({ onBackClick }) {
   const [videoStarted, setVideoStarted] = useState(false);
@@ -21,10 +24,15 @@ export default function Space({ onBackClick }) {
       <a-scene>
         {/* Cinema Environment */}
         <a-entity environment="preset: forest; dressingAmount: 10; skyColor: #88ccee;"></a-entity>
-        
+
         {/* Movie Screen */}
         <a-assets>
-          <video id="movie" src={movieSrc} crossOrigin="anonymous" playsInline="true" />
+          <video
+            id="movie"
+            src={movieSrc}
+            crossOrigin="anonymous"
+            playsInline="true"
+          />
         </a-assets>
 
         <a-video
@@ -59,11 +67,17 @@ export default function Space({ onBackClick }) {
 
         {/* 3D Model (Car or replace with cinema elements) */}
         <ModelViewer
-          modelSrc={carModel}
+          modelSrc={cinemaModel}
           position="0 0 -3"
-          scale="40 40 40"
+          scale="1 1 1"
           rotation="0 45 0"
         />
+        {/* <GltfModelViewer
+          modelSrc={cinemaModel2}
+          position="0 1.5 -5"
+          scale="1 1 1"
+          rotation="0 45 0"
+        /> */}
 
         {/* Camera and Cursor Controls */}
         <a-entity
