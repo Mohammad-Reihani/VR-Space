@@ -10,13 +10,6 @@ export default function ModelViewer({
   const modelRef = useRef(null);
 
   useEffect(() => {
-    const loadModel = () => {
-      if (modelRef.current) {
-        const newSrc = `${modelSrc}?v=${Date.now()}`;
-        modelRef.current.setAttribute("gltf-model", newSrc);
-      }
-    };
-
     const handleModelLoaded = (event) => {
       console.log("Model loaded successfully", event);
     };
@@ -25,10 +18,17 @@ export default function ModelViewer({
       console.error("Model failed to load:", error);
     };
 
+    // Function to load the model
+    const loadModel = () => {
+      if (modelRef.current) {
+        modelRef.current.setAttribute("gltf-model", modelSrc);
+      }
+    };
+
     if (modelRef.current) {
       modelRef.current.addEventListener("model-loaded", handleModelLoaded);
       modelRef.current.addEventListener("model-error", handleModelError);
-      loadModel();
+      loadModel(); // Load the model when the component mounts or modelSrc changes
     }
 
     return () => {
@@ -37,7 +37,7 @@ export default function ModelViewer({
         modelRef.current.removeEventListener("model-error", handleModelError);
       }
     };
-  }, [modelSrc]);
+  }, [modelSrc]); // Only rerun this effect when modelSrc changes
 
   return (
     <a-entity
