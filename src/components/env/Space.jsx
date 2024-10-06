@@ -3,16 +3,14 @@ import React, { useState } from "react";
 import "aframe";
 import "aframe-environment-component";
 import MenuInSpace from "./MenuInSpace";
-import ModelViewer from "./ModelViewer";
-import GltfModelViewer from "./GltfModelViewer";
+import GlbModelViewer from "./ModelViewers/GlbModelViewer";
 import ObjModelViewer from "./ModelViewers/ObjModelViewer";
-import movieSrc from "../../assets/test360_01.mp4"; // Video source
+import movieSrc from "../../assets/test360_01.mp4";
 
 //* Model imports
-import carModel from "../../assets/test3d.glb"; // Your car model
+import carModel from "../../assets/test3d.glb";
 import cinemaModel from "../../assets/models/low_poly_cinema.glb";
 import testModel from "../../assets/models/underground_parking_lot.glb";
-// import cinemaModel2 from "../../assets/models/low_poly_cinema/scene.gltf";
 import cinemaObj from "../../assets/models/cinema_obj/Low Poly - Cinema.obj";
 import cinemaMtl from "../../assets/models/cinema_obj/Low Poly - Cinema.mtl";
 
@@ -31,32 +29,14 @@ export default function Space({ onBackClick }) {
         {/* Cinema Environment */}
         <a-entity environment="preset: forest; dressingAmount: 10; skyColor: #88ccee;"></a-entity>
 
-        {/* Movie Screen */}
-        <a-assets>
-          <video
-            id="movie"
-            src={movieSrc}
-            crossOrigin="anonymous"
-            playsInline="true"
-          />
-        </a-assets>
-
-        <a-video
-          src="#movie"
-          position="0 3.35 -12.9"
-          width="6"
-          height="4"
-          autoplay={videoStarted} // Only autoplay after user interaction
-        ></a-video>
-
         {/* 3D Model (Car or replace with cinema elements) */}
-        {/* <ModelViewer
+        {/* <GlbModelViewer
           modelSrc={cinemaModel}
           position="0 0 -3"
           scale="1 1 1"
           rotation="0 45 0"
-        />
-        <ModelViewer
+        /> */}
+        {/* <GlbModelViewer
           modelSrc={testModel}
           position="0 0.2 -3"
           scale="1 1 1"
@@ -76,15 +56,31 @@ export default function Space({ onBackClick }) {
           raycaster="objects: .clickable"
           cursor="fuse: false; rayOrigin: mouse"
         ></a-entity> */}
-        {/* <a-entity> */}
-          <a-entity
-            position="0 2.5 -3"
-            camera
-            look-controls
-            raycaster="objects: .clickable"
-            cursor="fuse: false; rayOrigin: mouse"
-          ></a-entity>
-        {/* </a-entity> */}
+        <a-entity
+          position="0 2.5 -3"
+          camera
+          look-controls
+          raycaster="objects: .clickable"
+          cursor="fuse: false; rayOrigin: mouse"
+        ></a-entity>
+
+
+        {/* Movie Screen */}
+        <a-assets>
+          <video
+            id="movie"
+            src={movieSrc}
+            crossOrigin="anonymous"
+            playsInline="true"
+          />
+        </a-assets>
+        <a-video
+          src="#movie"
+          position="0 3.35 -12.9"
+          width="6"
+          height="4"
+          autoplay={videoStarted} // Only autoplay after user interaction
+        ></a-video>
 
         {/* Menu Component in Space */}
         {/* <MenuInSpace
