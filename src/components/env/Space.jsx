@@ -5,7 +5,7 @@ import "aframe-environment-component";
 import MenuInSpace from "./MenuInSpace";
 import GlbModelViewer from "./ModelViewers/GlbModelViewer";
 import ObjModelViewer from "./ModelViewers/ObjModelViewer";
-import movieSrc from "../../assets/test360_01.mp4";
+import movieSrc from "../../assets/videos/trailer.mp4";
 
 //* Model imports
 import carModel from "../../assets/test3d.glb";
@@ -134,10 +134,10 @@ export default function Space({ onBackClick }) {
         </a-assets>
         <a-video
           src="#movie"
-          position="0 3.35 -7.9"
-          width="6"
+          position="0 3.31 -7.9"
+          width="9"
           height="4"
-          autoplay={videoStarted} // Only autoplay after user interaction
+          // autoplay={videoStarted} // Only autoplay after user interaction
         ></a-video>
 
         {/* Menu Component in Space */}
