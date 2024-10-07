@@ -70,8 +70,8 @@ export default function Space({ onBackClick }) {
           cursor="fuse: false; rayOrigin: mouse"
         ></a-entity> */}
         <a-entity
-          position="0 2.5 -3"
-          camera
+          // position="0 2.5 -3"
+          // camera
           look-controls
           raycaster="objects: .clickable"
           cursor="fuse: false; rayOrigin: mouse"
@@ -79,31 +79,35 @@ export default function Space({ onBackClick }) {
 
         {/* Back Wall */}
         <a-box
-          position="0 0 7.89"
-          rotation="0 0 0"
+          position="0 3 7.89"
+          rotation=""
           width="12.15"
           height="11.8"
           depth="0.4"
           color="black"
+          geometry="height: 6"
         ></a-box>
         {/* Right Wall */}
         <a-box
-          position="6 0 -0.09"
+          position="6 3 -0.09"
           rotation="0 90 0"
           width="16.358"
           height="11.8"
           depth="0.4"
           color="black"
+          geometry="height: 6"
         ></a-box>
         {/* Ceiling Wall */}
-        {/* <a-box
-          position="0 0 7.89"
-          rotation="0 0 0"
-          width="12.15"
+        <a-box
+          position="0.04273 6.02318 -0.09"
+          rotation="90 90 0"
+          width="16.358"
           height="11.8"
           depth="0.4"
           color="black"
-        ></a-box> */}
+          geometry="height: 12.3"
+          visible=""
+        ></a-box>
 
         {/* Movie Screen */}
         <a-assets>
