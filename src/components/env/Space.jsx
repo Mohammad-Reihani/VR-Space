@@ -58,7 +58,7 @@ export default function Space({ onBackClick }) {
         <ObjModelViewer
           objSrc={cinemaObj}
           mtlSrc={cinemaMtl}
-          position="0 0 -5"
+          position="0 0 0"
           scale="1 1 1"
           rotation="0 0 0"
         />
@@ -77,6 +77,34 @@ export default function Space({ onBackClick }) {
           cursor="fuse: false; rayOrigin: mouse"
         />
 
+        {/* Back Wall */}
+        <a-box
+          position="0 0 7.89"
+          rotation="0 0 0"
+          width="12.15"
+          height="11.8"
+          depth="0.4"
+          color="black"
+        ></a-box>
+        {/* Right Wall */}
+        <a-box
+          position="6 0 -0.09"
+          rotation="0 90 0"
+          width="16.358"
+          height="11.8"
+          depth="0.4"
+          color="black"
+        ></a-box>
+        {/* Ceiling Wall */}
+        {/* <a-box
+          position="0 0 7.89"
+          rotation="0 0 0"
+          width="12.15"
+          height="11.8"
+          depth="0.4"
+          color="black"
+        ></a-box> */}
+
         {/* Movie Screen */}
         <a-assets>
           <video
@@ -88,7 +116,7 @@ export default function Space({ onBackClick }) {
         </a-assets>
         <a-video
           src="#movie"
-          position="0 3.35 -12.9"
+          position="0 3.35 -7.9"
           width="6"
           height="4"
           autoplay={videoStarted} // Only autoplay after user interaction
