@@ -40,7 +40,21 @@ export default function Space({ onBackClick }) {
     <div className="App" style={{ height: "100vh" }}>
       <a-scene>
         {/* Cinema Environment */}
-        <a-entity environment="preset: forest; dressingAmount: 10; skyColor: #88ccee;"></a-entity>
+        {/* <a-entity environment="preset: forest; dressingAmount: 10; skyColor: #88ccee;"></a-entity> */}
+
+        {/* Lightings */}
+        <a-entity
+          class="environment"
+          position="0 8 -8.5"
+          light="intensity: 0.8; shadowCameraTop: 10; shadowCameraRight: 10; shadowCameraBottom: -10; shadowCameraLeft: -10"
+          visible=""
+        ></a-entity>
+        <a-entity
+          class="environment"
+          position="0 50 0"
+          light="color: #c4e6f7; groundColor: #937a24; intensity: 0.6; type: hemisphere"
+          visible=""
+        ></a-entity>
 
         {/* 3D Model (Car or replace with cinema elements) */}
         {/* <GlbModelViewer
@@ -70,8 +84,8 @@ export default function Space({ onBackClick }) {
           cursor="fuse: false; rayOrigin: mouse"
         ></a-entity> */}
         <a-entity
-          // position="0 2.5 -3"
-          // camera
+          position="0.04 1.7 -2.5"
+          camera
           look-controls
           raycaster="objects: .clickable"
           cursor="fuse: false; rayOrigin: mouse"
